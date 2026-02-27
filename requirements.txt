@@ -23,3 +23,11 @@ uvicorn>=0.27.0
 xgboost>=2.0.0
 statsmodels>=0.14.0
 #pip install torch --index-url https://download.pytorch.org/whl/cu121
+
+
+tiktoken >= 0.5.1          # ch02; ch04; ch05
+
+
+tensorflow >= 2.18.0; sys_platform != 'darwin' or platform_machine != 'x86_64'   # ch05; ch06; ch07
+
+psutil >= 5.9.5            # ch07; already installed automatically as dependency of torch
