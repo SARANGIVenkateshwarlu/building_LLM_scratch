@@ -891,3 +891,184 @@ Token → ID process:
 
 ID is just a row number in embedding matrix.
 ---
+
+Here’s a clear breakdown of GPT versions vs. the tokenization methods they use, including important details.
+🔹 1. What Is Tokenization?
+
+Tokenization is how text is split into smaller units (tokens) before being processed by a model.
+
+A token can be:
+
+    A word
+    Part of a word
+    Punctuation
+    A single character
+
+Example:
+
+"ChatGPT is amazing!"
+
+May tokenize into something like:
+json
+
+["Chat", "G", "PT", " is", " amazing", "!"]
+
+Different GPT versions use different tokenizers.
+🔹 2. GPT Versions & Their Tokenizers
+✅ GPT‑2 (2019)
+
+    Tokenizer: Byte Pair Encoding (BPE)
+    Vocabulary size: ~50,257 tokens
+    Library: Early OpenAI BPE tokenizer
+    Encoding name (tiktoken): gpt2
+
+Details:
+
+    Operates on byte-level BPE
+    English-optimized
+    Not highly efficient for non-English text
+    Splits many rare words into multiple subword pieces
+
+✅ GPT‑3 (2020)
+
+    Tokenizer: Improved Byte Pair Encoding
+    Vocabulary size: ~50,257 tokens
+    Encoding name: r50k_base
+
+Details:
+
+    Similar to GPT‑2 tokenizer
+    Slight improvements in token merging
+    Still English-heavy optimization
+    Used by:
+        davinci
+        curie
+        babbage
+        ada
+
+✅ GPT‑3.5 (2022)
+
+    Tokenizer: cl100k_base
+    Vocabulary size: ~100,000 tokens
+    Major improvement over GPT‑3
+
+Details:
+
+    More efficient token packing
+    Better multilingual support
+    Better handling of whitespace and punctuation
+    Used by:
+        gpt-3.5-turbo
+        early gpt-4
+
+This tokenizer significantly reduced token counts for many languages.
+✅ GPT‑4 (2023)
+
+    Tokenizer: cl100k_base
+    Same tokenizer as GPT‑3.5
+
+Details:
+
+    Better compression for structured text
+    Improved JSON and code token handling
+    Supports larger context windows
+
+Used by:
+
+    gpt-4
+    gpt-4-32k
+
+✅ GPT‑4 Turbo (Late 2023)
+
+    Tokenizer: cl100k_base
+    Improved efficiency at system level
+    Optimized for long contexts (128k+)
+
+✅ GPT‑4o (2024)
+
+    Tokenizer: o200k_base
+    Vocabulary size: ~200,000 tokens
+
+Details:
+
+    Much better multilingual compression
+    Fewer tokens per sentence in many languages
+    Better emoji and symbol handling
+    Better code compression
+    Used by:
+        gpt-4o
+        gpt-4o-mini
+
+This is currently one of the most efficient OpenAI tokenizers.
+✅ GPT‑4.1 / GPT‑4.5 (2025–2026 models)
+
+    Tokenizer: o200k_base
+    Same 200k vocabulary family
+    Further internal optimization
+    Better multimodal alignment
+
+🔹 3. Tokenizer Comparison Table
+Model Version	Encoding Name	Approx. Vocab Size	Efficiency	Multilingual Support
+GPT‑2	gpt2	50k	Low	Weak
+GPT‑3	r50k_base	50k	Medium	Limited
+GPT‑3.5	cl100k_base	100k	High	Good
+GPT‑4	cl100k_base	100k	High	Good
+GPT‑4 Turbo	cl100k_base	100k	Very High	Good
+GPT‑4o	o200k_base	200k	Excellent	Very Strong
+GPT‑4.1/4.5	o200k_base	200k	Excellent+	Very Strong
+🔹 4. Key Differences Between Tokenizers
+✅ Vocabulary Size
+
+    Larger vocabulary → fewer tokens per sentence
+    GPT‑4o cuts token count significantly in many languages
+
+✅ Multilingual Efficiency
+
+    GPT‑2/GPT‑3: optimized mainly for English
+    GPT‑4o: strong multilingual compression
+
+✅ Code & JSON Handling
+
+Newer tokenizers:
+
+    Compress structured data better
+    Use fewer tokens for brackets and formatting
+
+✅ Emoji & Symbols
+
+Older models:
+
+    Often split emoji into multiple tokens
+    New models:
+    Handle emoji more efficiently
+
+🔹 5. Example Token Count Comparison
+
+Example sentence:
+
+"Artificial intelligence is transforming the world."
+
+Approximate token counts:
+Model	Token Count
+GPT‑2	9–11
+GPT‑3.5	8–9
+GPT‑4o	6–8
+
+Non-English text shows even bigger differences.
+🔹 6. Why This Matters
+
+Tokenization affects:
+
+    ✅ API cost
+    ✅ Context window limits
+    ✅ Speed
+    ✅ Multilingual performance
+    ✅ Code generation efficiency
+
+🔹 7. Summary
+
+    GPT‑2 → Basic BPE (~50k vocab)
+    GPT‑3 → Improved BPE (~50k)
+    GPT‑3.5 / GPT‑4 → cl100k_base (~100k)
+    GPT‑4o / GPT‑4.1+ → o200k_base (~200k, most efficient)
+
