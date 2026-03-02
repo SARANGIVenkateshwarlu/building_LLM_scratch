@@ -19,3 +19,6 @@ https://arxiv.org/pdf/2005.14165
 https://github.com/openai/tiktoken
 https://docs.pytorch.org/tutorials/beginner/basics/data_tutorial.html
 https://docs.pytorch.org/docs/stable/data.html
+
+WORD2VEC:
+https://colab.research.google.com/drive/1_ceJDQUHBasbaTB74vg2Fz2N_O2h6C3T?usp=sharing
