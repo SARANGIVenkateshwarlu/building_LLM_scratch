@@ -1072,3 +1072,4 @@ Tokenization affects:
     GPT‑3.5 / GPT‑4 → cl100k_base (~100k)
     GPT‑4o / GPT‑4.1+ → o200k_base (~200k, most efficient)
 
+https://github.com/openai/tiktoken
