@@ -1072,9 +1072,9 @@ Tokenization affects:
     GPT‑3.5 / GPT‑4 → cl100k_base (~100k)
     GPT‑4o / GPT‑4.1+ → o200k_base (~200k, most efficient)
 
-https://github.com/openai/tiktoken
-https://docs.pytorch.org/tutorials/beginner/basics/data_tutorial.html
-https://docs.pytorch.org/docs/stable/data.html
+---
 
 
 Input-target paie vs sliding window ?
+
+Dataset vs DataLoader LLM ?

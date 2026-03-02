@@ -14,3 +14,8 @@ https://cdn.openai.com/research-covers/language-unsupervised/language_understand
 
 Language Models are Few-Shot Learners _paper
 https://arxiv.org/pdf/2005.14165
+
+
+https://github.com/openai/tiktoken
+https://docs.pytorch.org/tutorials/beginner/basics/data_tutorial.html
+https://docs.pytorch.org/docs/stable/data.html
