@@ -20,5 +20,14 @@ https://github.com/openai/tiktoken
 https://docs.pytorch.org/tutorials/beginner/basics/data_tutorial.html
 https://docs.pytorch.org/docs/stable/data.html
 
+Datasets & DataLoaders
+https://docs.pytorch.org/tutorials/beginner/basics/data_tutorial.html
+
 WORD2VEC:
 https://colab.research.google.com/drive/1_ceJDQUHBasbaTB74vg2Fz2N_O2h6C3T?usp=sharing
+
+Word Representations in Vector Space
+https://arxiv.org/pdf/1301.3781
+
+Embedding
+https://docs.pytorch.org/docs/stable/generated/torch.nn.Embedding.html
