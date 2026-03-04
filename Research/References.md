@@ -31,3 +31,66 @@ https://arxiv.org/pdf/1301.3781
 
 Embedding
 https://docs.pytorch.org/docs/stable/generated/torch.nn.Embedding.html
+
+MACHINE TRANSLATION (Attension)
+https://arxiv.org/pdf/1409.
+
+
+Torch_Softmax
+https://docs.pytorch.org/docs/stable/generated/torch.nn.Softmax.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Books:
+
+Foundations of Large Language Models_Tong Xiao_2025 (GPT, BERT, and LLaMA.)
+https://arxiv.org/pdf/2501.09223?
+
+Speech and Language Processing
+https://web.stanford.edu/~jurafsky/slp3/ed3book.pdf
+Speech and Language Processing
+
+
+How to Scale Your Model: A Systems View of LLMs on TPUs
+https://jax-ml.github.io/scaling-book/roofline/
+
+Understanding Large Language Models
+https://liu.diva-portal.org/smash/get/diva2:1848043/FULLTEXT01.pdf
+
+
+Large Language Models in Cybersecurity
+https://link.springer.com/content/pdf/10.1007/978-3-031-54827-7.pdf
+
+
+LLM Architectures - A Comprehensive Guide: BERT, BART, XLNET 
+https://www.amazon.com/LLM-Architectures-Comprehensive-Guide-XLNET/dp/B0D45RLV95
+
+
+
+
+
+
+
+
+
+---
+BERT: Pre-training 
+https://arxiv.org/pdf/1810.04805
+
+
+https://bpbonline.com/products/mastering-large-language-models
+
+Best books: https://www.packtpub.com
+ 
+
