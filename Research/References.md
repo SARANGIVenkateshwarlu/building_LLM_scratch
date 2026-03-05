@@ -39,6 +39,34 @@ https://arxiv.org/pdf/1409.
 Torch_Softmax
 https://docs.pytorch.org/docs/stable/generated/torch.nn.Softmax.html
 
+Linear
+https://docs.pytorch.org/docs/stable/generated/torch.nn.Linear.html
+
+
+Visualizing transformers and attention
+https://www.youtube.com/watch?v=KJtZARuO3JY&t=43s
+https://www.youtube.com/watch?v=e9-0BxyKG10&t=8s
+https://www.youtube.com/watch?v=LPZh9BOjkQs&t=259s
+
+
+
+PyTorch Upper and Lower Triangular Matrix implementation: 
+https://pytorch.org/docs/stable/gener...
+https://pytorch.org/docs/stable/gener...
+
+PyTorch Masked_fill implementation:
+https://pytorch.org/docs/stable/gener...
+
+PyTorch Dropout implementation: 
+https://pytorch.org/docs/stable/gener...
+
+PyTorch register_buffer implementation:
+https://pytorch.org/docs/stable/gener...
+https://discuss.pytorch.org/t/what-is...
+
+torch.triu:
+https://docs.pytorch.org/docs/stable/generated/torch.triu.html
+
 
 
 

@@ -171,3 +171,83 @@ Alammar J. The illustrated transformer. jalammar.github.io. 2018.
 3Blue1Brown. Attention in transformers, step-by-step. YouTube. 2024.
 
 Word count: 1,450 | Primary sources: 12 specialized publications, 5 seminal papers | Student accessibility: Feynman examples + visual tables
+
+
+---
+# Transformers Lecture Summary
+
+## Introduction and Goals
+- Speaker introduces visual explanation of Transformers for technical audience assuming curiosity.
+- Goal: Understand computations in LLMs, why GPU-parallelizable, enabling massive scale (e.g., Nvidia's market cap).
+- Focus: Simplified decoder-only model for next-token prediction in chatbots.
+
+**Example**: Predict "the cleverest thinker of all time was" → probability distribution over vocab; sample for generation.
+
+## Applications and Model Overview
+- Transformers from "Attention is All You Need" (2017): Originally machine translation; now Whisper (speech-to-text), text-to-speech, image classification.
+- Chatbot model: Predict next token autoregressively; seed with user-AI conversation format.
+
+**Example**: Model suggests UNIC visit activities via sampling (e.g., "visit the museum"); temperature >0 adds creativity, avoids stilted output.
+
+## High-Level Data Flow
+- Input text → tokens (words/subwords/punctuation) → embeddings (high-dim vectors encoding meaning + position).
+- Flow: Tokenize → Embed → Stack of [Attention → MLP] layers → Final vector → logit → softmax probabilities.
+- GPT-3: 96 layers, 12k-dim embeddings; predict at every position for training efficiency.
+
+**Example**: "Two roads diverged..." → "one" embeds generic numeral/pronoun, absorbs context (roads, choice) via layers.
+
+## Training Process
+- Unsupervised: Next-token prediction on internet text; cost = -log(prob of true next token).
+- Gradient descent minimizes high-dim loss surface; one input yields multiple predictions (causal masking).
+- Emergent behavior from billions of parameters.
+
+**Example**: "TNG Technology is a ___" → cost low if high prob on "leading"; average over trillions of examples.
+
+## Embeddings and Vector Space
+- Tokens → lookup high-dim vectors (e.g., GPT-3: 12,288 dims); similar meanings cluster.
+- Directions encode concepts (e.g., Word2Vec: king - man + woman ≈ queen; uncle - aunt ≈ man - woman).
+- High dims allow exponential nearly-orthogonal vectors for concepts (superposition).
+
+**Example**: Embeddings capture poetry (choice in Frost); ~100 dims fit 100k+ near-orthogonal vectors.
+
+## Attention Block: Queries, Keys, Values
+- Embeddings (w/ position) → Query (Q), Key (K), Value (V) via matrices (low-dim, e.g., 64-128).
+- Q asks (e.g., noun: "adjectives before?"); K answers if aligned (dot product >0).
+- Attention pattern: Q·K^T → softmax → weights.
+
+**Example**: "Fluffy blue creature" → creature Q aligns with fluffy/blue K (high dot); others low/negative.
+
+## Softmax and Masking
+- Softmax: Raw scores → probabilities (0-1, sum=1); "soft" max for gradients.
+- Causal mask: Set future positions to -∞ → 0 post-softmax (training: no peeking ahead).
+
+**Example**: Predict after "creature" ignores "roamed"; quadratic in context length (needs optimizations).
+
+## Values and Updates
+- V matrix: Embed → value vectors; weighted sum (attention weights · V) = Δe.
+- Output: original embedding + Δe (residual connection).
+- Low-rank V (embed → low → embed) saves params.
+
+**Example**: Fluffy/blue V add "fluffiness"/"blueness" directions to creature → "fluffy blue creature".
+
+## Multi-Head Attention and Layers
+- Multiple heads (e.g., 100+): Parallel QKV sets for grammar, antecedents, etc.; sum outputs.
+- Block: Attention → MLP (stores facts, e.g., "Jordan-basketball") → repeat 96x.
+
+**Example**: Adjectives update nouns (one head); adverbs update verbs (another); MLP holds world knowledge.
+
+## Why Transformers Succeed
+- Parallelizable (matrix ops on GPUs; no RNN seq); scale (compute/data) improves qualitatively.
+- Unsupervised pretraining; multimodal (text+image/sound via tokens).
+- High-dim superposition; residual stability.
+
+**Example**: Vs. sequential NLP; ingest whole context at once.
+
+## Q&A Highlights
+- Effort: Math background + interpretability talks; superposition hypothesis.
+- Residuals: Baked-in for stability/dim preservation.
+- Presentations: Focus clarity over jokes.
+- Analog compute: Possible for error-tolerant matrix mult, but digital optimized.
+- Images: Patch tokens + 2D positional encoding; mask attention row/column-wise.
+
+**Example**: GPT-3 heads: ~1.5M params/head; image patches avoid bloat.
