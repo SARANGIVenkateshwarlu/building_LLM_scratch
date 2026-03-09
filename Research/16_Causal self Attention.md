@@ -69,3 +69,38 @@
 - Theory + code mix; master dims/matrices for LLMs.
 
 **Example**: Stack heads for parallel relations (syntax, semantics).
+
+
+```
+Text
+ ↓
+Tokenization
+ ↓
+Tokens
+ ↓
+Token IDs (integers)
+ ↓
+Embedding Layer
+ ↓
+Token Embeddings (vectors)(X)
+        ↓
+Linear Projections (Wq, Wk, Wv)
+        ↓
+Q = X · Wq
+K = X · Wk
+V = X · Wv
+        ↓
+Attention Scores = Q · Kᵀ
+        ↓
+Apply Mask (set future positions to -∞)
+        ↓
+Scale: Attention Scores / √d_k
+       ↓
+Dropout
+        ↓
+Softmax
+        ↓
+Attention Weights (rows sum to 1)   
+        ↓
+Output (Context vector matrix) = Attention Weights · V
+```
