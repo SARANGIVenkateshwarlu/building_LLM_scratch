@@ -82,6 +82,11 @@ https://docs.pytorch.org/docs/stable/generated/torch.triu.html
 
 Books:
 
+https://poloclub.github.io/transformer-explainer/
+https://www.youtube.com/watch?v=Ub3GoFaUcds
+https://www.youtube.com/watch?v=yT84Y5zCnaA
+https://www.youtube.com/watch?v=wjZofJX0v4M
+
 Foundations of Large Language Models_Tong Xiao_2025 (GPT, BERT, and LLaMA.)
 https://arxiv.org/pdf/2501.09223?
 
