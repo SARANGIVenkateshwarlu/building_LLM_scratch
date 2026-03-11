@@ -1,8 +1,6 @@
-### Building LLM Inspired by Andrey Karpathy, Sebastian Raschka, and Raj Dandekar  
+### Building LLM from Scratch
 
 ---
-
-
 Building an LLM from scratch is a very high‑leverage skill if you approach it strategically.
 
 Let’s structure this clearly:

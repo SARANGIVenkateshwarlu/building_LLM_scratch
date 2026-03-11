@@ -67,6 +67,14 @@ https://discuss.pytorch.org/t/what-is...
 torch.triu:
 https://docs.pytorch.org/docs/stable/generated/torch.triu.html
 
+Pytorch: GELU
+https://docs.pytorch.org/docs/stable/generated/torch.nn.GELU.html
+
+GAUSSIAN ERROR LINEAR UNITS (GELUS)
+https://arxiv.org/pdf/1606.08415
+
+Visualizing the Loss Landscape of Neural Nets 
+https://arxiv.org/pdf/1712.09913
 
 
 
