@@ -76,13 +76,43 @@ https://arxiv.org/pdf/1606.08415
 Visualizing the Loss Landscape of Neural Nets 
 https://arxiv.org/pdf/1712.09913
 
+Data set the-verdict.txt: 
+https://github.com/rasbt/LLMs-from-scratch/blob/main/ch02/01_main-chapter-code/the-verdict.txt
+
+Datasets & DataLoaders:
+https://docs.pytorch.org/tutorials/beginner/basics/data_tutorial.html
+
+tiktoken:
+https://github.com/openai/tiktoken
+
+torch.nn.functional.cross_entropy:
+https://docs.pytorch.org/docs/stable/generated/torch.nn.functional.cross_entropy.html
 
 
+optim.AdamW:
+https://docs.pytorch.org/docs/stable/generated/torch.optim.AdamW.html
+
+torch.multinomial:
+https://docs.pytorch.org/docs/stable/generated/torch.multinomial.html
 
 
+torch.topk:
+https://docs.pytorch.org/docs/stable/generated/torch.topk.html
 
+torch.multinomial:
+https://docs.pytorch.org/docs/stable/generated/torch.multinomial.html
 
+state_dict in PyTorch: 
+https://docs.pytorch.org/tutorials/recipes/recipes/what_is_state_dict.html#what-is-a-state-dict-in-pytorch
 
+Saving-Loading Models:
+https://docs.pytorch.org/tutorials/beginner/saving_loading_models.html
+
+torch.optim.Optimizer.state_dict:
+https://docs.pytorch.org/docs/stable/generated/torch.optim.Optimizer.state_dict.html
+
+OpenAI GPT-2 Weights:
+https://www.kaggle.com/datasets/xhlulu/openai-gpt2-weights
 
 
 
