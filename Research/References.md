@@ -118,6 +118,14 @@ pandas.DataFrame.to_csv.html
 https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_csv.html
 
 
+SMS Spam Collection
+
+https://archive.ics.uci.edu/dataset/228/sms+spam+collection
+
+Datasets & DataLoaders:
+https://docs.pytorch.org/tutorials/beginner/basics/data_tutorial.html
+
+
 
 
 
