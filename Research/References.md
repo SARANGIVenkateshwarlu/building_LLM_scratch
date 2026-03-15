@@ -125,7 +125,11 @@ https://archive.ics.uci.edu/dataset/228/sms+spam+collection
 Datasets & DataLoaders:
 https://docs.pytorch.org/tutorials/beginner/basics/data_tutorial.html
 
+AdamW:
+https://docs.pytorch.org/docs/stable/generated/torch.optim.AdamW.html
 
+torch.save:
+https://docs.pytorch.org/docs/stable/generated/torch.save.html
 
 
 
