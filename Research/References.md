@@ -131,6 +131,36 @@ https://docs.pytorch.org/docs/stable/generated/torch.optim.AdamW.html
 torch.save:
 https://docs.pytorch.org/docs/stable/generated/torch.save.html
 
+Instruction data link: 
+https://github.com/rasbt/LLMs-from-scratch/blob/main/ch07/01_main-chapter-code/instruction-data.json
+
+stanford_alpaca:
+https://github.com/tatsu-lab/stanford_alpaca
+
+
+
+
+LoRA: https://arxiv.org/pdf/2106.09685
+LoRA: Low-Rank Adaptation of Large Language Models
+https://github.com/S-LoRA/S-LoRA
+https://github.com/sabetAI/BLoRA
+https://github.com/TUDB-Labs/mLoRA
+https://github.com/microsoft/lora
+
+
+
+https://sebastianraschka.com/
+DeepSeek-R1:  https://arxiv.org/pdf/2501.12948
+
+The Big LLM Architecture Comparison: https://magazine.sebastianraschka.com/p/the-big-llm-architecture-comparison
+
+Understanding Reasoning LLMs: https://magazine.sebastianraschka.com/p/understanding-reasoning-llms
+
+LLM Architecture Gallery : https://sebastianraschka.com/llm-architecture-gallery/
+
+
+Parameter-Efficient Transfer Learning for NLP
+https://arxiv.org/pdf/1902.00751
 
 
 Books:
