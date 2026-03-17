@@ -158,6 +158,21 @@ PyTorch Datasets and Dataloaders:
 https://pytorch.org/tutorials/beginne...
 
 
+https://github.com/rasbt/LLMs-from-scratch/blob/main/ch07/01_main-chapter-code/instruction-data.json
+
+MEASURING MASSIVE MULTITASK LANGUAGE UNDERSTANDING (MMMLU)
+https://arxiv.org/pdf/2009.03300
+
+https://tatsu-lab.github.io/alpaca_eval/
+https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct
+https://github.com/tatsu-lab/stanford_alpaca
+
+
+
+
+
+
+
 
 
 LoRA: https://arxiv.org/pdf/2106.09685
