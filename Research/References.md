@@ -136,6 +136,26 @@ https://github.com/rasbt/LLMs-from-scratch/blob/main/ch07/01_main-chapter-code/i
 
 stanford_alpaca:
 https://github.com/tatsu-lab/stanford_alpaca
+https://arxiv.org/abs/2405.14394
+
+instruction-data
+https://github.com/rasbt/LLMs-from-scratch/blob/main/ch07/01_main-chapter-code/instruction-data.json
+
+torch.nn.CrossEntropyLoss:
+https://docs.pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html
+
+
+Instruction data link: 
+https://github.com/rasbt/LLMs-from-sc...
+
+Stanford Alpaca link: 
+https://github.com/tatsu-lab/stanford...
+
+PyTorch cross entropy loss: 
+https://pytorch.org/docs/stable/gener...
+
+PyTorch Datasets and Dataloaders: 
+https://pytorch.org/tutorials/beginne...
 
 
 

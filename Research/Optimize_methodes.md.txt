@@ -1,0 +1,278 @@
+
+0️⃣ Why LLM Compression Matters (Context)
+
+LLMs scale performance with model size and data, but this creates massive compute and memory costs. Empirical scaling laws linking model size, data, and performance were established by OpenAI and DeepMind in 2020–2022 (lemonde.fr).
+
+Modern compression aims to:
+
+    Reduce memory footprint
+    Lower latency
+    Enable edge/mobile deployment
+    Reduce training/inference cost
+    Maintain reasoning quality
+
+A 2025 survey highlights that quantization, pruning, and knowledge distillation are the core pillars, increasingly combined in hybrid pipelines (link.springer.com).
+1️⃣ Taxonomy of LLM Compression (High-Level)
+
+According to the TACL survey on LLM compression, main categories include:
+
+    Quantization
+    Pruning
+    Knowledge Distillation (KD)
+    Low-rank factorization
+    Hybrid methods (direct.mit.edu)
+
+In 2025 research, hybrid compression (combining multiple methods) is a dominant trend (link.springer.com).
+2️⃣ Pruning (Weight / Structure Sparsification)
+2.1 What is Pruning?
+
+Pruning removes parameters judged less important.
+
+Two main types:
+✅ Unstructured Pruning
+
+    Removes individual weights.
+    High sparsity possible.
+    Harder to accelerate unless hardware supports sparse ops.
+
+✅ Structured Pruning
+
+    Removes neurons, heads, channels, layers.
+    More hardware-friendly.
+
+(These distinctions are discussed in pruning research and reviews (llmsresearch.com).)
+2.2 2024–2025 Advances in Pruning
+🔹 A. Dynamic Token Pruning (Inference-time)
+
+Apple’s LazyLLM (ICML 2024 workshop) introduced dynamic token pruning:
+
+    Instead of static prompt trimming,
+    Model dynamically selects relevant tokens during generation (machinelearning.apple.com).
+
+This improves long-context efficiency without retraining.
+🔹 B. Structured-Then-Unstructured (STUN, ACL 2025)
+
+Recent ACL 2025 work combines structured + unstructured pruning for better trade-offs (aclanthology.org).
+
+This reflects a shift toward:
+
+    staged pruning pipelines rather than single-step sparsification.
+
+🔹 C. State-Space & Mamba Pruning (EMNLP 2025)
+
+Research on pruning state-space models (e.g., Mamba-based LLMs) shows:
+
+    Unstructured WANDA pruning is robust
+    Output projection layers are highly sensitive
+    Head pruning can degrade sharply (linkedin.com)
+
+This shows pruning behavior differs by architecture.
+2.3 Current Recommendation (2026)
+
+✅ Use structured pruning first
+✅ Follow with light unstructured refinement
+✅ Combine with quantization for deployment
+✅ For long contexts → consider dynamic token pruning
+3️⃣ Quantization (Low-Bit Weight Compression)
+
+Quantization reduces numeric precision of weights (e.g., FP16 → INT4 → 2-bit → 1-bit).
+3.1 Post-Training Quantization (PTQ)
+
+Most widely used in practice.
+🔹 GPTQ (Gradient Post-Training Quantization)
+
+    Efficient 4-bit quantization
+    Strong performance retention
+    Widely used in open-source LLM deployment (poniaktimes.com)
+
+🔹 AWQ (Activation-Aware Quantization)
+
+    Accounts for activation distribution
+    Stable 4-bit inference
+    Competitive vs GPTQ (poniaktimes.com)
+
+IJCAI 2025 benchmarking shows AWQ competitive and stable at 4-bit (ijcai.org).
+3.2 QLoRA (Quantized Fine-Tuning)
+
+QLoRA:
+
+    Quantizes base model (often 4-bit)
+    Trains low-rank adapters
+    Reduces memory up to ~79% vs full 16-bit fine-tuning (poniaktimes.com)
+
+In 2025, QLoRA enables fine-tuning on consumer GPUs (medium.com).
+3.3 Quantization-Aware Training (QAT)
+
+Instead of compressing after training, model is trained with quantization in mind.
+
+Native QAT model releases (e.g., Gemma, Qwen) appeared in 2025 via PyTorch/TorchAO collaborations (reddit.com).
+
+QAT generally outperforms naive PTQ at the same bit width.
+3.4 Extreme Low-Bit LLMs (2-bit / 1.58-bit)
+🔹 BitNet (1.58-bit LLM)
+
+Microsoft researchers released:
+
+    BitNet b1.58
+    Competitive with full-precision models
+    Open-weights release in 2025 (en.wikipedia.org)
+
+This marks transition toward:
+
+    training-time ultra-low-bit models (not just post-training quantization).
+
+3.5 2026 Practical Recommendation
+
+✅ 4-bit AWQ/GPTQ = strong deployment default
+✅ QLoRA = best cost/quality fine-tuning
+✅ QAT = best for production-grade quant models
+✅ 2-bit+ = promising but still sensitive for reasoning tasks
+4️⃣ Knowledge Distillation (KD)
+4.1 Core Idea
+
+KD transfers knowledge from:
+
+    Large teacher
+    Smaller student
+
+Defined as teacher–student compression (direct.mit.edu).
+
+KD is crucial for LLM deployment (sciencedirect.com).
+4.2 Types of KD in LLMs (2024–2025)
+🔹 1. Logit Distillation
+
+Match teacher soft outputs.
+🔹 2. Instruction Distillation
+
+Student learns instruction-following from teacher (link.springer.com).
+🔹 3. In-Context Learning Distillation
+
+Transfers ICL capability (direct.mit.edu).
+🔹 4. Dataset Distillation
+
+Compress data, not just model (arxiv.org).
+🔹 5. Selective Reflection KD (2025)
+
+Improves student compatibility and training data filtering (arxiv.org).
+4.3 Distillation for Reasoning Models
+
+Recent research validates KD for building reasoning models (en.wikipedia.org).
+
+With reasoning-focused models (e.g., o1, o3 trend), KD is central for:
+
+    Creating smaller reasoning-capable models.
+
+4.4 2026 Recommendation
+
+✅ Distill from instruction-tuned teachers
+✅ Use synthetic data carefully
+✅ Combine with quantization (distill → quantize pipeline)
+✅ For reasoning models → multi-stage KD
+5️⃣ Low-Rank & PEFT Methods
+
+Low-rank adaptation reduces parameter updates:
+
+    LoRA
+    QLoRA
+    LQ-LoRA (low-rank + quantized decomposition) (reddit.com)
+
+Used for:
+
+    Efficient fine-tuning
+    Compression-compatible training
+
+6️⃣ Sparse Mixture-of-Experts (Architectural Sparsity)
+
+MoE models activate only subsets of parameters.
+
+Switch Transformer, GLaM etc. use sparsity to reduce compute (link.springer.com).
+
+This is:
+
+    architectural compression rather than post-hoc compression.
+
+7️⃣ Hybrid Compression (Dominant 2025 Trend)
+
+Recent review (Springer 2025):
+
+    Quantization + pruning + distillation combined
+    Hybrid compression is now key research direction (link.springer.com).
+
+Modern pipelines often:
+
+    Train full model
+    Distill into smaller architecture
+    Apply structured pruning
+    Apply 4-bit quantization
+    Add LoRA adapters
+
+8️⃣ Emerging Directions (2025–2026)
+🔹 A. Quantized Reinforcement Learning
+
+4-bit RL training pipelines demonstrated for 32B models on single H100 (reddit.com).
+🔹 B. Training-Time Ultra-Low Precision
+
+BitNet & ParetoQ-style scaling laws research toward 2-bit+ models (en.wikipedia.org).
+🔹 C. Hardware-Integrated Quantization
+
+TorchAO native quantized releases in 2025 (reddit.com).
+🔹 D. Semantic-Aware Data Compression
+
+Future direction: unify data and model compression (link.springer.com).
+✅ Practical Decision Framework (2026)
+Goal	Recommended Stack
+Edge deployment	4-bit AWQ/GPTQ
+Fine-tune cheaply	QLoRA
+Production stable quant	QAT
+Ultra-low memory	BitNet / 2-bit (experimental)
+Small reasoning model	Multi-stage KD
+Long context efficiency	Dynamic token pruning
+📌 Key Insight (Deep Research Conclusion)
+
+Compression is no longer just post-training weight reduction.
+
+2025–2026 trend shows shift toward:
+
+    Training-time low precision
+    Hybrid compression pipelines
+    Architecture-aware pruning
+    Reasoning-aware distillation
+    Hardware–algorithm co-design
+
+The field is transitioning from:
+
+    "compress after training"
+
+to:
+
+    "design models for compression from the beginning."
+
+If you'd like, I can next provide:
+
+    📊 A comparison matrix (accuracy vs memory vs latency)
+    🔬 Mathematical formulation of each method
+    🧠 Compression strategies specifically for reasoning LLMs
+    💻 Practical deployment guide (vLLM / TensorRT / llama.cpp)
+    📚 A curated 2024–2026 paper reading roadmap
+
+Learn more:
+
+    How far will artificial intelligence go?
+    A review of state-of-the-art techniques for large language model compression | Complex & Intelligent Systems | Springer Nature Link
+    A Survey on Model Compression for Large Language Models | Transactions of the Association for Computational Linguistics | MIT Press
+    Research papers improving performance of LLMs 1/31/3
+    LazyLLM: Dynamic Token Pruning for Efficient Long Context LLM Inference - Apple Machine Learning Research
+    STUN: Structured-Then-Unstructured Pruning
+    Our paper on pruning state-space LLMs accepted to EMNLP 2025 | Tamer Ghattas posted on the topic | LinkedIn
+    The 2025 State of Model Quantization: QLoRA, GPTQ, AWQ & Future Trends - Poniak Times
+    Proceedings of the Thirty-Fourth International Joint Conference on Artiﬁcial Intelligence (IJCAI-25)
+    The Model Optimization Revolution: How Pruning, Distillation, and PEFT Are Reshaping AI in 2025 | by Harsh Prakash | Medium
+    PyTorch now offers native quantized variants of popular models!
+    1.58-bit large language model
+    A survey on knowledge distillation: Recent advancements - ScienceDirect
+    Knowledge distillation and dataset distillation of large language models: emerging trends, challenges, and future directions | Artificial Intelligence Review | Springer Nature Link
+    Knowledge Distillation and Dataset Distillation of Large Language Models: Emerging Trends, Challenges, and Future Directions
+    Less is More: Selective Reflection for Compatible and Efficient Knowledge Distillation in Large Language Models
+    Reasoning model
+    LQ-LoRA: Low-rank Plus Quantized Matrix Decomposition for Efficient Language Model Finetuning
+    QeRL: NVFP4-Quantized Reinforcement Learning (RL) Brings 32B LLM Training to a Single H100—While Improving Exploration
