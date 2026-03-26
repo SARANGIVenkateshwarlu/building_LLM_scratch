@@ -1,8 +1,4 @@
-<img src="https://r2cdn.perplexity.ai/pplx-full-logo-primary-dark%402x.png" style="height:64px;margin-right:32px"/>
 
-# summarize transcript notes in markdown.md format. step by step deep details.
-
-```markdown
 # Complete GPT Model Architecture – Step‑by‑Step Detailed Notes
 
 ## 1. Lecture Context and Recap

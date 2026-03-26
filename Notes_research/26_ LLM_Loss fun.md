@@ -1,8 +1,4 @@
-<img src="https://r2cdn.perplexity.ai/pplx-full-logo-primary-dark%402x.png" style="height:64px;margin-right:32px"/>
 
-# summarize transcript notes in markdown.md format. step by step deep details.
-
-```markdown
 # LLM Training: Loss Functions & Text Evaluation
 
 ## 1. Lecture Context: Stage 2 – Training Begins
