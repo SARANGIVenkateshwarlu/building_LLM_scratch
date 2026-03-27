@@ -11,7 +11,7 @@ __pycache__/
 # Jupyter
 .ipynb_checkpoints/
 
-# Model files
+# Model files > 100M
 *.pth
 *.pt
 *.bin
@@ -35,5 +35,5 @@ uv.lock
 # Python version
 .python-version
 
-# GPT folders
+# GPT folders > 100M
 gpt2/
