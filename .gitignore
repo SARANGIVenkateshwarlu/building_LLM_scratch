@@ -37,3 +37,7 @@ uv.lock
 
 # GPT folders > 100M
 gpt2/
+
+#Download data
+.zip
+sms_spam_collection/
