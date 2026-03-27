@@ -41,3 +41,4 @@ gpt2/
 #Download data
 .zip
 sms_spam_collection/
+.csv
