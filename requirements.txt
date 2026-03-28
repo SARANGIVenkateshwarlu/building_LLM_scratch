@@ -24,6 +24,7 @@ tokenizers>=0.15.0
 # bitsandbytes>=0.42.0
 tiktoken>=0.5.1
 #faiss-cpu>=1.7.4
+importlib
 
 # ---- Scientific Stack ----
 numpy>=1.26.0,<2.1
