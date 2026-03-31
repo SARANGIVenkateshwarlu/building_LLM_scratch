@@ -166,9 +166,9 @@ https://arxiv.org/pdf/2009.03300
 https://tatsu-lab.github.io/alpaca_eval/
 https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct
 https://github.com/tatsu-lab/stanford_alpaca
+https://tatsu-lab.github.io/alpaca_eval/
 
-
-
+https://github.com/rasbt/LLMs-from-scratch/blob/main/ch07/01_main-chapter-code/instruction-data.json
 
 
 
@@ -244,4 +244,32 @@ https://bpbonline.com/products/mastering-large-language-models
 
 Best books: https://www.packtpub.com
  
+---
 
+
+Embedding Sentence Transformer Model for Movie Review classification
+ https://www.youtube.com/watch?v=sW0KEGoH43M&t=95s
+
+
+Launch of GPT-OSS: OpenAI's first open source model after GPT-2
+ https://www.youtube.com/watch?v=PKOVEjvIXRQ
+
+
+ Build a Small Language Model (SLM) From Scratch
+ https://www.youtube.com/watch?v=pOFcwcwtv3k&t=42s
+
+
+ https://www.youtube.com/watch?v=uz1srt2WJKg
+ 
+Build a small language model from scratch: Assemble the model architecture
+
+Let us build GPT-OSS from Scratch
+https://www.youtube.com/watch?v=hBUsySdcA3I
+
+
+Build a Small Language Model (SLM) From Scratch
+https://www.youtube.com/watch?v=pOFcwcwtv3k&t=31s
+
+
+https://www.youtube.com/watch?v=bLDlwcl6hbA
+I pre-trained Gemma3 270M from scratch
