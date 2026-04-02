@@ -1,240 +1,174 @@
-### Building LLM from Scratch
+# **Project: Build Large Language Models From Scratch**
 
----
-Building an LLM from scratch is a very high‑leverage skill if you approach it strategically.
+A step-by-step project series focused on understanding how large language models are built from the ground up, from data preprocessing and attention to pre-training, fine-tuning, and evaluation. The goal of the project is to train the reader to think like a fundamental machine learning engineer rather than only using ready-made LLM APIs.
 
-Let’s structure this clearly:
-1️⃣ Your Big Picture Goal
+## Project Overview
 
- Goals should be:
-✅ Technical Goal
+This project walks through the complete lifecycle of building an LLM from scratch. It begins with the foundations of text processing and tokenization, moves into the internal mechanics of attention and Transformer blocks, and then progresses to training, fine-tuning, and evaluation. The codebase is designed in a modular way so each building block can be understood, modified, and extended independently.
 
-    Deeply understand how LLMs work mathematically and system-wise
-    Be able to implement a transformer/LLM from scratch (PyTorch preferred)
-    Understand training, fine-tuning, and inference optimization
+## Motivation
 
-✅ Industry Goal (FinTech-focused)
+The main purpose of the project is educational: to make the inner workings of LLMs transparent and accessible. Instead of treating an LLM as a black box, the project emphasizes the “nuts and bolts” of model construction, helping learners develop a deeper intuition for how language models learn, represent context, and generate predictions.
 
-    Apply LLMs to:
-        Financial document analysis
-        Risk modeling
-        Fraud detection
-        Sentiment analysis on financial news
-        Regulatory compliance automation
-        Quant research assistance
-    Understand production deployment constraints (latency, cost, privacy)
+## What This Project Covers
 
-✅ Career Goal
+The lecture series and codebase cover three major stages:
 
-    Be able to say in interviews:
+1. Foundation stage.
+2. Pre-training stage.
+3. Fine-tuning and evaluation stage.
 
-        “I understand transformers from first principles, have implemented one from scratch, and can adapt LLMs for financial NLP applications.”
+Each stage builds on the previous one, similar to constructing a house from the foundation upward.
 
-2️⃣ Your Intentions (Why You’re Doing This)
+## Stage 1: Foundation
 
-Be explicit about this. Write this down somewhere:
+This stage focuses on the core components required before training begins.
 
-    Move from “LLM user” → to “LLM builder”
-    Gain systems-level understanding
-    Bridge research + applied AI
-    Become competitive for:
-        ML Engineer roles
-        Applied Scientist roles
-        Quant AI roles
-        NLP Engineer roles in FinTech
+### Data Preprocessing
 
-3️⃣ Learning Objectives for the 40-Hour Course
+The first step is converting raw text into a form that a neural network can use. Text is broken into tokens, tokens are mapped to token IDs, and those IDs are converted into dense vector representations called embeddings. Positional embeddings are added so the model can preserve token order, producing the final input embeddings used by the model.
 
-Break it into technical milestones:
-🔹 Phase 1: Foundations
+### Intuition
 
-You must understand:
+Token embeddings capture meaning, while positional embeddings capture order. Both are necessary because language depends not only on what words appear, but also on where they appear in the sequence.
 
-    Tokenization (BPE, WordPiece)
+### Attention Mechanism
 
-    Embeddings
+Attention is the central idea that makes modern LLMs powerful. Instead of processing each token in isolation, the model computes relationships between tokens using queries, keys, and values. Attention scores are scaled, masked causally, normalized with softmax, and used to produce context vectors.
 
-    Positional encoding
+### Intuition
 
-    Attention mechanism (VERY important)
+Attention tells the model which other tokens matter most when interpreting a given token. This is what allows the model to build contextual understanding rather than static word meanings.
 
-    Self-attention math:
-    Attention(Q,K,V)=softmax(QKTdk)V
-    Attention(Q,K,V)=softmax(dk​
-    ​QKT​)V
+### Multi-Head Attention
 
-    Multi-head attention
+Multiple attention heads are used in parallel so the model can learn different kinds of relationships at the same time. One head may focus on syntax, another on semantic relations, and another on long-range dependencies.
 
-    Layer normalization
+### Transformer Architecture
 
-    Residual connections
+The Transformer block combines:
 
-✅ Objective: Be able to derive attention on paper.
-🔹 Phase 2: Transformer Architecture
+- Layer normalization.
+- Multi-head attention.
+- Residual connections.
+- Feedforward neural networks.
 
-You should:
+These blocks are stacked many times to form the full LLM architecture.
 
-    Code a transformer block from scratch
-    Understand:
-        Encoder vs decoder
-        Masked attention
-        Causal masking
-        Feed-forward layers
+### Intuition
 
-✅ Objective: Implement GPT-style transformer without copying blindly.
-🔹 Phase 3: Training LLM
+Attention helps tokens communicate, while the feedforward layers help the model transform and refine the information it has gathered.
 
-Learn:
+## Stage 2: Pre-Training
 
-    Cross-entropy loss
-    Autoregressive training
-    Backpropagation in transformers
-    Gradient clipping
-    Optimizers (AdamW)
-    Learning rate scheduling
-    Scaling laws (basic intuition)
+This stage explains how the model learns language patterns from large amounts of data.
 
-✅ Objective: Train a small GPT model on a custom dataset.
-🔹 Phase 4: Practical Engineering
+### Next-Token Prediction
 
-You must understand:
+The model is trained to predict the next token in a sequence. Given an input sentence, the LLM outputs logits over the vocabulary, which are converted into probabilities for the next token.
 
-    GPU memory constraints
-    Mixed precision
-    Checkpointing
-    Token batching
-    Inference optimization
-    LoRA / fine-tuning
-    Quantization
+### Loss Function
 
-✅ Objective: Fine-tune a model efficiently.
-4️⃣ How to Complete the 40 Hours Strategically
+The training objective is typically cross-entropy loss, which measures the difference between the predicted next token and the actual next token.
 
-Do NOT just passively watch.
-✅ Recommended Structure (8 Weeks Plan)
-Week 1–2: Core Theory
+### Backpropagation
 
-    Watch 5–6 hours per week
-    Take handwritten notes
-    Derive equations manually
-    Re-implement small pieces immediately
+After computing the loss, gradients are calculated for all trainable parameters, including:
 
-Week 3–4: Coding from Scratch
+- Token embeddings.
+- Positional embeddings.
+- Query, key, and value matrices.
+- LayerNorm parameters.
+- Feedforward network weights.
+- Final output layers.
 
-    Rebuild:
-        Attention layer
-        Transformer block
-    Train tiny model on small text
 
-Week 5–6: Scaling & Optimization
+### Optimization
 
-    Add:
-        Multi-head attention
-        Layer norm
-        Dropout
-    Train on bigger dataset
+The model updates parameters using gradient-based optimization methods such as Adam or AdamW. This iterative process is repeated over many batches and epochs.
 
-Week 7: FinTech Mini Project
+### Intuition
 
-Choose one:
+Pre-training teaches the model general language structure by repeatedly correcting its next-token predictions.
 
-    Financial news sentiment LLM
-    SEC filing summarizer
-    Earnings call analyzer
-    Risk classification system
+### Practical Note
 
-Week 8: Portfolio Packaging
+The lecture series demonstrates this process on a small dataset and a smaller setup, while real-world LLM pre-training requires massive compute and large-scale datasets.
 
-    Clean GitHub repo
-    Write technical blog post:
-        “Building GPT from Scratch – A Researcher’s Perspective”
-    Add benchmarks
-    Add financial use-case demo
+## Stage 3: Fine-Tuning
 
-5️⃣ How to Align This With FinTech
+After pre-training, the model is adapted for specific downstream tasks.
 
-FinTech cares about:
-Skill	Why It Matters
-NLP	Financial documents
-Transformers	News & filings
-Time-series + NLP	Market signals
-Risk modeling	Credit & fraud
-Model interpretability	Regulatory compliance
-Latency optimization	Trading systems
-6️⃣ Extra Suggestions for Industry Readiness
+### Classification Fine-Tuning
 
-Since you are a PhD, you must:
-🔹 1. Connect Theory to Production
+One project trains an LLM for email classification, such as distinguishing spam from non-spam messages.
 
-Learn:
+### Intuition
 
-    Docker
-    FastAPI
-    Model serving
-    AWS/GCP basics
+The model already understands language broadly from pre-training, and fine-tuning teaches it how to solve a specific task.
 
-🔹 2. Add One Financial Dataset Project
+### Instruction Fine-Tuning
 
-Examples:
+Another project trains the model to follow instructions, such as converting active voice to passive voice or responding to user prompts in a structured way.
 
-    Use SEC 10-K dataset
-    Financial PhraseBank
-    Kaggle financial datasets
+### Intuition
 
-🔹 3. Learn These Industry Keywords
+Instruction tuning makes the model more useful as a general assistant by teaching it how to respond to commands.
 
-    Retrieval-Augmented Generation (RAG)
-    Fine-tuning vs prompt engineering
-    PEFT (Parameter Efficient Fine-Tuning)
-    Model compression
-    Vector databases
+## Evaluation
 
-7️⃣ Common Mistakes to Avoid
+The project also covers how to measure model quality.
 
-❌ Watching without coding
-❌ Copying code without understanding math
-❌ Ignoring scaling and deployment
-❌ Not building a portfolio
-❌ Staying too theoretical
+### Benchmark Evaluation
 
-As a PhD, your danger is staying too academic.
-8️⃣ What Will Make You Stand Out in Interviews
+One approach uses benchmark-style testing such as MMLU, which evaluates performance across many different tasks.
 
-If you can say:
+### Human Evaluation
 
-    I implemented self-attention from scratch.
-    I trained a mini GPT.
-    I fine-tuned it on financial text.
-    I optimized inference latency.
-    I deployed it as an API.
+Another approach is human judgment, where people compare outputs and rate model quality.
 
-You will be top-tier candidate.
-9️⃣ Suggested Final Outcome of This Course
+### LLM-as-Judge
 
-By the end, you should have:
+The project also demonstrates using a stronger LLM to evaluate another model’s response by comparing the predicted output against the target output and assigning a score.
 
-✅ 1 LLM built from scratch
-✅ 1 financial domain fine-tuning project
-✅ 1 deployed demo
-✅ 1 blog post
-✅ Strong transformer math understanding
-🔟 Long-Term Strategy (Very Important)
+### Intuition
 
-To maximize FinTech impact:
+Evaluation is not just about correctness. For language models, it also includes usefulness, coherence, and instruction-following quality.
 
-After this course, combine:
+## Key Learnings
 
-    LLMs + Time Series
-    LLMs + Risk Modeling
-    LLMs + Reinforcement Learning
-    LLMs + Market Microstructure
+This project teaches how to:
 
-This intersection is rare and highly valuable.
+- Build a tokenization and embedding pipeline.
+- Implement attention from scratch.
+- Assemble Transformer blocks into a full architecture.
+- Train a next-token prediction model.
+- Fine-tune the model for classification and instruction-following.
+- Evaluate model outputs using benchmarks, humans, and LLM judges.
 
----
-Build LLM
-Fine-tune
-RAG with FAISS
-Deploy with FastAPI
-Do financial modeling
-Build production-ready system
+
+## Why This Project Matters
+
+The project helps learners move beyond using LLMs as black-box services. It develops a working understanding of how language models are engineered, trained, and adapted, which is valuable for research, model development, and advanced ML engineering.
+
+## Suggested Extensions
+
+The codebase is intentionally structured so it can be extended for research and experimentation. Possible next steps include:
+
+- Changing the number of Transformer blocks.
+- Trying different learning rates and optimizers.
+- Comparing evaluation methods.
+- Exploring smaller or more efficient model variants.
+- Studying the effect of architectural changes on performance.
+
+
+## Outcome
+
+By completing the series, the learner gains hands-on experience in building:
+
+- A next-token prediction LLM from scratch.
+- A spam classification LLM.
+- An instruction-tuned assistant model.
+
+This makes the project a strong portfolio piece for interviews, research discussions, and practical ML/LLM engineering work.
+

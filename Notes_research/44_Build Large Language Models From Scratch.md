@@ -1,6 +1,4 @@
-<img src="https://r2cdn.perplexity.ai/pplx-full-logo-primary-dark%402x.png" style="height:64px;margin-right:32px"/>
-
-# Build Large Language Models From Scratch
+### Build Large Language Models From Scratch    
 
 A step-by-step project series focused on understanding how large language models are built from the ground up, from data preprocessing and attention to pre-training, fine-tuning, and evaluation. The goal of the project is to train the reader to think like a fundamental machine learning engineer rather than only using ready-made LLM APIs.
 
