@@ -62,3 +62,10 @@ tqdm>=4.66.0
 #uv add tensorflow --frozen
 #uv add torch numpy matplotlib tqdm tiktoken
 
+
+
+# curl -fsSL https://ollama.com/install.sh | sh 
+# ollama --version
+# ollama pull llama3:8b
+# ollama run llama3:8b -- python -c "import torch; print(torch.__version__)"
+
