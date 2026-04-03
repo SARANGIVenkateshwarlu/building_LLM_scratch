@@ -1,5 +1,5 @@
 def main():
-    print("Hello from building-llm-scratch!")
+    print("Hello from llm-classification!")
 
 
 if __name__ == "__main__":

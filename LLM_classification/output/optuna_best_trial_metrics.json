@@ -1,0 +1,16 @@
+{
+  "epoch": 1,
+  "val_accuracy": 0.87248322147651,
+  "val_loss": 0.40577490338565486,
+  "train_accuracy": 0.9625,
+  "train_loss": 0.15846062618074938,
+  "params": {
+    "drop_rate": 0.11236203565420874,
+    "learning_rate": 0.0004123206532618727,
+    "weight_decay": 0.0008471801418819979,
+    "epochs": 6,
+    "train_last_n_blocks": 4,
+    "train_final_norm": false,
+    "train_embeddings": false
+  }
+}
